@@ -2,10 +2,19 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'default-src': ["*"],
+      'font-src':    ["*"],
+      'img-src':     ["*"],
+      'style-src':   ["*"],
+      'media-src':   ["*"],
+      'script-src': "'self' 'unsafe-eval' 'http://api.mobile.endomondo.com' 'api.mobile.endomondo.com' 'endomondo.com'",
+      'connect-src': ["*"]
+    },
     modulePrefix: 'endohancer',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
