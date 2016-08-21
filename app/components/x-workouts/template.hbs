@@ -1,0 +1,15 @@
+{{#if workouts}}
+
+  {{#if workoutsFiltered}}
+    {{#each workoutsFiltered as |workout|}}
+      {{x-workout workout=workout}}
+    {{/each}}
+  {{else}}
+    <p>
+      No workouts {{paper-icon "face"}}
+    </p>
+  {{/if}}
+
+{{else}}
+  {{paper-progress-circular}}
+{{/if}}

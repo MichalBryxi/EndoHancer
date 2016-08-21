@@ -1,0 +1,31 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}
+          {{format-number workout.distance maximumFractionDigits=1}}km
+          @
+          {{format-number workout.speedAvg maximumFractionDigits=1}}km/h
+      {{/text.headline}}
+
+      {{#text.subhead}}
+        <a href="{{workoutURL}}" target="_blank">
+          {{format-date workout.startTime}}
+        </a>
+        -
+        {{workout.name}}
+
+      {{/text.subhead}}
+
+    {{/title.text}}
+
+    <md-card-title-media>
+      {{x-workout/icon sport=workout.sport class="md-media-sm"}}
+    </md-card-title-media>
+
+  {{/card.title}}
+
+  {{#card.actions}}
+    {{#paper-checkbox value=workout.isSelected onChange=(action (mut workout.isSelected))}}
+    {{/paper-checkbox}}
+  {{/card.actions}}
+{{/paper-card}}

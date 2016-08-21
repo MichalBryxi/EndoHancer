@@ -1,0 +1,23 @@
+{{#paper-content padding=true}}
+  {{#if auth.isAuthenticated}}
+    {{sports-select setSport=setFilterSport selectedSport=filterSport placeholder="Display sport type"}}
+
+    {{#paper-checkbox value=isSelectedAll class="md-avatar" onChange=selectedAll}}
+      Select all
+    {{/paper-checkbox}}
+
+  {{else}}
+      {{paper-input block=true label="E-mail" value=email onChange=(action (mut email))}}
+      {{paper-input block=true label="Password" type="password" value=password onChange=(action (mut password)) onKeyDown=(action "passwordKeyDown")}}
+
+      <div layout>
+        {{#if auth.isLoading}}
+          {{paper-progress-circular}}
+        {{else}}
+          {{#paper-button onClick=(action "processAuth") raised=true primary=true}}
+            Login
+          {{/paper-button}}
+        {{/if}}
+      </div>
+  {{/if}}
+{{/paper-content}}

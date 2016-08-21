@@ -1,0 +1,27 @@
+@import 'ember-paper';
+
+.external-link {
+  float: right;
+}
+
+.fixed-fab {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+}
+
+body > .ember-view {
+  // @extend .layout-fill;
+}
+
+md-icon.md-default-theme, md-icon {
+  color: inherit;
+}
+
+.md-media-sm {
+    text-align: center;
+}
+
+.content {
+  min-height: calc(100vh - 64px);
+}

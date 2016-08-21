@@ -1,0 +1,13 @@
+{{#paper-select
+  block=true
+  placeholder=placeholder
+  value=selectedSport
+  itemLabelCallback=(action "getSportName")
+  onChange=setSport
+}}
+  {{#each sports as |sport|}}
+    {{#paper-option value=sport.id}}
+      {{sport.name}}
+    {{/paper-option}}
+  {{/each}}
+{{/paper-select}}

@@ -3,19 +3,22 @@
 module.exports = function(environment) {
   var ENV = {
     contentSecurityPolicy: {
-      'default-src': ["*"],
-      'font-src':    ["*"],
-      'img-src':     ["*"],
-      'style-src':   ["*"],
-      'media-src':   ["*"],
-      'script-src': "'self' 'unsafe-eval' 'http://api.mobile.endomondo.com' 'api.mobile.endomondo.com' 'endomondo.com'",
-      'connect-src': ["*"]
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self'",
+      'img-src': "'self' data:",
+      'media-src': "'self'"
     },
     modulePrefix: 'endohancer',
     environment: environment,
     baseURL: '/',
     locationType: 'hash',
     EmberENV: {
+      EXTEND_PROTOTYPES: {
+        'Date': false
+      },
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true

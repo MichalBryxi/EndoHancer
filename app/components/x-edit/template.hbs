@@ -1,0 +1,22 @@
+{{#if showPromptDialog}}
+  {{#paper-dialog fullscreen=fullscreen onClose=(action "close") origin=dialogOrigin}}
+
+    {{#paper-dialog-content}}
+      <p>For selected {{selectedWorkouts.length}} workouts set:</p>
+      {{sports-select setSport=setEditSport selectedSport=editSport placeholder="sport"}}
+    {{/paper-dialog-content}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      {{#paper-button onClick=(action "close")}}Cancel{{/paper-button}}
+      {{#paper-button raised=true primary=true onClick=(action "save")}}Save{{/paper-button}}
+    {{/paper-dialog-actions}}
+
+  {{/paper-dialog}}
+{{/if}}
+
+{{#if selectedWorkouts}}
+  {{#paper-button class="fixed-fab" onClick=(action (mut showPromptDialog)) raised=true fab=true accent=true}}
+    {{selectedWorkouts.length}}
+  {{/paper-button}}
+{{/if}}
