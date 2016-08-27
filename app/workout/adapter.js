@@ -1,8 +1,17 @@
 import DS from 'ember-data';
+import ApplicationAdapter from '../application/adapter';
 
-export default DS.RESTAdapter.extend({
-  namespace: 'mobile/api/workout',
+export default ApplicationAdapter.extend({
+  // '/api/' - Heroku API_PREFIX_PATH, which is then removed
+  // '/mobile/api/workout' - Endomondo namespace
+  // namespace: 'api/mobile/api/workout',
   auth: Ember.inject.service(),
+
+  namespace: Ember.computed('envPrefix', function () {
+    let envPrefix = this.get('envPrefix');
+
+    return `${envPrefix}/api/workout`
+  }),
 
   urlForQuery() {
     let namespace = this.get('namespace');

@@ -1,7 +1,14 @@
 import DS from 'ember-data';
+import ApplicationAdapter from '../application/adapter';
 
-export default DS.RESTAdapter.extend({
-  namespace: 'mobile/auth',
+export default ApplicationAdapter.extend({
+  // namespace: 'api/mobile/auth',
+  namespace: Ember.computed('envPrefix', function () {
+    let envPrefix = this.get('envPrefix');
+
+    return `${envPrefix}/auth`
+  }),
+
   pathForType: function(type) {
     return '';
   },
