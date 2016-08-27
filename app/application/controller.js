@@ -74,7 +74,12 @@ export default Ember.Controller.extend({
     saveChanges() {
       this.get('selectedWorkouts').forEach((workout) => {
         workout.set('sport', this.get('editSport'));
-        workout.save();
+        workout.save().then( function () {
+            workout.set('isSelected', false);
+          }, function (reason) {
+            console.log(`Something went wrong when saving ${workout.id}`, reason);
+          }
+        );
       });
     }
   }

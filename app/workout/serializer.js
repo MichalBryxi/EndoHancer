@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default DS.JSONAPISerializer.extend({
   auth: Ember.inject.service(),
 
-  normalizeResponse: function (store, primaryModelClass, payload, id, requestType) {
+  normalizeQueryResponse: function (store, primaryModelClass, payload, id, requestType) {
     payload.data = payload.data.map(function (attributes) {
       let data = {
         id: attributes.id,
@@ -28,9 +28,15 @@ export default DS.JSONAPISerializer.extend({
 
     delete json.data;
 
-    console.log(json);
-
     return json;
+  },
+
+  normalizeSaveResponse: function (store, primaryModelClass, payload, id, requestType) {
+    return {
+      "data": {
+        id: id
+      }
+    };
   },
 
   keyForAttribute: function(key) {

@@ -2,8 +2,6 @@ import Ember from 'ember';
 import moment from 'moment';
 
 export default Ember.Service.extend({
-  intl: Ember.inject.service(),
-
   dateFormat: 'YYYY-MM-DD',
   sport: '-1',
   startDate: null,
@@ -17,6 +15,5 @@ export default Ember.Service.extend({
 
     let endDate = moment().format(format);
     this.set('endDate', endDate);
-    console.log(startDate, endDate);
   }
 });

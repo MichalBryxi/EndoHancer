@@ -37,6 +37,6 @@ Heroku instance: http://endohancer.pudr.com
  ```
  # Keep this up-to-date for ember-cli upgrade
  ember install ember-paper
- ember install ember-intl
  ember install ember-moment
+ ember install ember-cli-format-number
  ```

@@ -2,15 +2,13 @@
   {{#card.title as |title|}}
     {{#title.text as |text|}}
       {{#text.headline}}
-          {{format-number workout.distance maximumFractionDigits=1}}km
+          {{format-number workout.distance format="0.0"}}km
           @
-          {{format-number workout.speedAvg maximumFractionDigits=1}}km/h
+          {{format-number workout.speedAvg format="0.0"}}km/h
       {{/text.headline}}
 
       {{#text.subhead}}
-        <a href="{{workoutURL}}" target="_blank">
-          {{format-date workout.startTime}}
-        </a>
+        <a href="{{workoutURL}}" target="_blank">{{moment-format workout.startTime "YYYY-MM-DD"}}</a> 
         -
         {{workout.name}}
 
