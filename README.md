@@ -34,9 +34,9 @@ Heroku instance: http://endohancer.pudr.com
 
  * [heroku-buildpack-ember-cli](https://github.com/tonycoco/heroku-buildpack-ember-cli) - buildpack for ember-cli & Heroku
  * [ember-cli](https://ember-cli.com/) - v2.6.1
- ```
- # Keep this up-to-date for ember-cli upgrade
- ember install ember-paper
- ember install ember-intl
- ember install ember-moment
- ```
+```
+# Keep this up-to-date for ember-cli upgrade
+ember install ember-paper
+ember install ember-intl
+ember install ember-moment
+```
