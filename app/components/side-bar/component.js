@@ -4,6 +4,7 @@ export default Ember.Component.extend({
   email: null,
   password: null,
   auth: Ember.inject.service(),
+  filter: Ember.inject.service(),
 
   actions: {
     processAuth: function () {
@@ -17,6 +18,10 @@ export default Ember.Component.extend({
       if(event.code == 'Enter') {
         this.send('processAuth');
       }
+    },
+
+    setFilter(key, value) {
+      this.set(`filter.${key}`, value);
     }
   }
 });

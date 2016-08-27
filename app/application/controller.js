@@ -1,23 +1,34 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Controller.extend({
   isSideBarOpen: true,
 
+  dateFormat: 'YYYY-MM-DD hh:mm:ss UTC',
+
   auth: Ember.inject.service(),
+  filter: Ember.inject.service(),
+
   isFilterDisabled: Ember.computed.empty('workouts'),
   isSelectedAll: false,
-  filterSport: '-1',
-  noFilter: '-1',
+  noSport: '-1',
   editSport: '5', // KickBike
 
   selectedWorkouts: Ember.computed.filterBy('workouts', 'isSelected', true),
 
-  workouts: Ember.computed('auth.isAuthenticated', function () {
+  workouts: Ember.computed('auth.isAuthenticated', 'filter.startDate', 'filter.endDate', 'filter.maxResults', function () {
     if(this.get('auth.isAuthenticated')) {
+      let dateFormat = this.get('dateFormat');
+      let after = moment(this.get('filter.startDate')).format(dateFormat);
+      let before = moment(this.get('filter.endDate')).format(dateFormat);
+      let maxResults = this.get('filter.maxResults');
+
       return this.get('store').query ('workout', {
         authToken: this.get('auth.token'),
-        maxResults: 1000,
+        maxResults: maxResults,
         fields: 'basic',
+        after: after,
+        before: before
         // after: '2015-01-01 00:00:00 UTC',
         // before: '2015-12-31 23:59:59 UTC'
       });
@@ -26,16 +37,16 @@ export default Ember.Controller.extend({
     }
   }),
 
-  workoutsFiltered: Ember.computed('filterSport', 'workouts.[]', function () {
-    let filter = this.get('filterSport');
-    let noFilter = this.get('noFilter');
+  workoutsFiltered: Ember.computed('filter.sport', 'workouts.[]', function () {
+    let sport = this.get('filter.sport');
+    let noSport = this.get('noSport');
     let workouts = this.get('workouts');
 
-    if(filter === noFilter) {
+    if(sport === noSport) {
       return workouts;
     } else {
       let data = workouts.filter(function (item) {
-        return item.get('sport') === filter;
+        return item.get('sport') === sport;
       });
 
       return data;
@@ -52,10 +63,6 @@ export default Ember.Controller.extend({
       });
     },
 
-    setFilterSport(newSport) {
-      this.set('filterSport', newSport);
-    },
-
     setEditSport(newSport) {
       this.set('editSport', newSport);
     },
@@ -65,7 +72,6 @@ export default Ember.Controller.extend({
     },
 
     saveChanges() {
-      console.log('yep');
       this.get('selectedWorkouts').forEach((workout) => {
         workout.set('sport', this.get('editSport'));
         workout.save();

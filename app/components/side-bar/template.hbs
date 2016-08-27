@@ -1,10 +1,24 @@
 {{#paper-content padding=true}}
   {{#if auth.isAuthenticated}}
-    {{sports-select setSport=setFilterSport selectedSport=filterSport placeholder="Display sport type"}}
+    {{sports-select setSport=(action "setFilter" "sport") selectedSport=filter.sport placeholder="Display sport type"}}
 
-    {{#paper-checkbox value=isSelectedAll class="md-avatar" onChange=selectedAll}}
-      Select all
-    {{/paper-checkbox}}
+    {{paper-input flex=true label="From" type="date" value=filter.startDate onChange=(action "setFilter" "startDate")}}
+    {{paper-input flex=true label="To" type="date" value=filter.endDate onChange=(action "setFilter" "endDate")}}
+
+    {{paper-input
+      type="number"
+      flex=true
+      label="Max results"
+      value=filter.maxResults
+      onChange=(action "setFilter" "maxResults")
+      max="1000"
+    }}
+
+    <div class="flex">
+      {{#paper-checkbox value=isSelectedAll flex=true onChange=selectedAll}}
+        Select all
+      {{/paper-checkbox}}
+    </div>
 
   {{else}}
       {{paper-input block=true label="E-mail" value=email onChange=(action (mut email))}}
