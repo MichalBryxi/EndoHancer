@@ -2,12 +2,21 @@
 
 module.exports = function(environment) {
   var ENV = {
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['production'],
+        config: {
+          id: 'UA-43732567-17'
+        }
+      }
+    ],
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-inline'",
+      'script-src': "'self' 'unsafe-inline' www.google-analytics.com",
       'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
       'font-src': "'self' fonts.gstatic.com",
-      'connect-src': "'self'",
+      'connect-src': "'self' www.google-analytics.com",
       'img-src': "'self' data:",
       'media-src': "'self'"
     },

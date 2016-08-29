@@ -39,4 +39,5 @@ Heroku instance: http://endohancer.pudr.com
 ember install ember-paper
 ember install ember-moment
 ember install ember-cli-format-number
+ember install ember-metrics
 ```
