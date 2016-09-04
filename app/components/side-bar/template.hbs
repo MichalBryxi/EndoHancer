@@ -21,22 +21,17 @@
     </div>
 
   {{else}}
-      {{paper-input block=true label="E-mail" value=email onChange=(action (mut email))}}
-      {{paper-input block=true label="Password" type="password" value=password onChange=(action (mut password)) onKeyDown=(action "passwordKeyDown")}}
+    {{paper-input block=true label="E-mail" value=email onChange=(action (mut email))}}
+    {{paper-input block=true label="Password" type="password" value=password onChange=(action (mut password)) onKeyDown=(action "passwordKeyDown")}}
 
-      <div layout>
-        {{#if auth.isLoading}}
-          {{paper-progress-circular}}
-        {{else}}
-          {{#paper-button onClick=(action "processAuth") raised=true primary=true}}
-            Login
-          {{/paper-button}}
-        {{/if}}
-      </div>
-
-      <p>
-        <strong>Warning:</strong>
-        This service needs your Endomondo login credentials. It is not good idea to put them anywhere else than Endomondo website.
-      </p>
+    <div layout>
+      {{#if auth.isLoading}}
+        {{paper-progress-circular}}
+      {{else}}
+        {{#paper-button onClick=(action "processAuth") raised=true primary=true}}
+          Login
+        {{/paper-button}}
+      {{/if}}
+    </div>
   {{/if}}
 {{/paper-content}}

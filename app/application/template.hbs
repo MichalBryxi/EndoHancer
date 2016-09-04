@@ -31,8 +31,15 @@
       {{x-workouts workoutsFiltered=workoutsFiltered workouts=workouts}}
       {{x-edit selectedWorkouts=selectedWorkouts editSport=editSport setEditSport=(action "setEditSport") saveChanges=(action "saveChanges")}}
     {{else}}
+      <h2>What is this about?</h2>
       <p>
-        Please login...
+        This service can do a bulk change of your Endomondo workout sport type. Say you have logged hundreds of workouts. But because Endomondo did not support your sport, you logged it as different type of sport. And now as <a href="https://support.endomondo.com/hc/en-us/articles/225992148-Android-App-Update-16-8-1">Endomondo added</a> new sports you want to mass change all of them to the correct sport type. This service can do it for you.
+      </p>
+      <p>
+        Yay for kick scooters!
+      </p>
+      <p>
+        <strong>Disclaimer:</strong> This service is in no way supported by or connected to Endomondo. For convenience it needs to use your <em>Endomondo login credentials</em>. But for security reasons you should never ever put those in any other place than Endomondo itself. If you are not ok with that, please <em>do not</em> use this service. Although I personally tested this service on hundreds of workouts on my private Endomondo account and everything went ok, I <em>cannot guarantee</em> that there won't be any data damage in the process. Please use at your own risk.
       </p>
     {{/if}}
   {{/paper-card-content}}

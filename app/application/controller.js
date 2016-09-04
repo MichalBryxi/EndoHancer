@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
   isFilterDisabled: Ember.computed.empty('workouts'),
   isSelectedAll: false,
   noSport: '-1',
-  editSport: '5', // KickBike
+  editSport: '95', // KickBike
 
   selectedWorkouts: Ember.computed.filterBy('workouts', 'isSelected', true),
 
