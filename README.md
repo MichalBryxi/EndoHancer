@@ -1,3 +1,5 @@
+# Project has moved: https://gitlab.com/michal.bryxi/endohancer
+
 # EndoHancer
 
 On 22.08.2016 Endomondo [added](https://support.endomondo.com/hc/en-us/articles/225992148-Android-App-Update-16-8-1) long awaited sport [kick scooter](http://www.kolobezky-plzen.cz/). Like many of my friends, for a long time I logged my kick scooter activity as [roller skiing](https://en.wikipedia.org/wiki/Roller_skiing). So then I wanted to change all my logged *roller skiing* activity to *kick scooter*. Unfortunately in Endomondo web/mobile there is no option to do so. I also looked at [sport-tracker-liberator library](https://github.com/isoteemu/sports-tracker-liberator), which was great source of resources for this work.
